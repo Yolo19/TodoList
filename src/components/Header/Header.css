@@ -1,0 +1,25 @@
+.header {
+    width: 100vw;
+    height: 8vh;
+    background-color: rgba(244, 91, 105, 1);
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.header_title {
+    font-weight: 900;
+    text-align:"center";
+    font-size:"1.5rem";
+    color: #777;
+}
+
+.menu_style {
+    
+    line-height: 8vh;
+}
+
+.left_menu {
+    position: absolute;
+    top: 8vh
+}

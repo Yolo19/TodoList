@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyZWxLzEeA0KAVqSFaFE3AQAAAAACAAAAAAAQZgAAAAEAACAAAADUzuSTQirE90EbYOg8nZ4DaEJkVaHvXAjkURTfqOlbLQAAAAAOgAAAAAIAACAAAAAsDyZB5k6QzfRgZs4W54s4Vu4Jrj8LCG44aznRWx4Hz4AAAACPVgILeFlsxVoYcTluevb8940A8thXMtd1VNMHcAbVYjftnb6OA99h4cXq1Ryu0qbN8OAAo1k8lookqKr4ZqntgmzfRTLkf765dFW6c4fHF7Mc9Sb/Z5OwjYv0NSA/8Jn9viIhmBoXfzpHqtOyLty9d/Mt0UCuaIDtMZL/2kIzJUAAAACukRMw7ubM1aLykqq2QaY2f9puApdQrQwjHEjIDxJh0+3H9s84quWT3Q9MU+COxpU+ustPjfOt8I6DGiB5PZ3c</EncryptedPassword>
+    <History>True|2021-08-28T08:41:23.7763129Z;True|2021-08-28T20:34:08.6216339+12:00;True|2021-08-28T20:27:01.0217553+12:00;True|2021-08-28T20:20:47.8565746+12:00;True|2021-08-28T20:19:47.6767576+12:00;True|2021-08-28T20:16:33.1937250+12:00;True|2021-08-28T20:06:13.5714366+12:00;True|2021-08-28T19:28:22.1750901+12:00;True|2021-08-28T19:18:52.5149677+12:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="TodoList.Data.AppDbContext">
+      <Value>Data Source=tcp:todolist-server.database.windows.net,1433%3bInitial Catalog=todolist-db%3bPersist Security Info=True%3bUser ID=todolist%3bPassword=Yu123456%3bMultipleActiveResultSets=False%3bConnect Timeout=30%3bEncrypt=True%3bTrustServerCertificate=False</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

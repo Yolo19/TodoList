@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\TodoList_Backend\TodoList\TodoList\obj\Debug\net5.0\PubTmp\Out\" />
+  <dbfullsql path="C:\TodoList_Backend\TodoList\TodoList\obj\Debug\net5.0\PubTmp\EFSQLScripts\TodoList.Data.AppDbContext.sql" />
+</sitemanifest>

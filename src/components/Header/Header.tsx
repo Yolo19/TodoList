@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { MenuOutlined, DownOutlined } from "@ant-design/icons";
-import { Row, Col, Drawer, Avatar, Menu, Dropdown } from "antd"
+import { Row, Col, Menu, Dropdown } from "antd"
 import "./Header.css"
-import Sidebar from "../Sidebar/Sidebar"
 
 const Header = () => {
     const [visible, setVisible] = useState(false);

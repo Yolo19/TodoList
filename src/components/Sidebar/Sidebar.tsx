@@ -1,5 +1,5 @@
 import React from "react";
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from "@ant-design/icons";
+import { MailOutlined } from "@ant-design/icons";
 import { Menu } from "antd"
 import { useHistory } from "react-router-dom";
 

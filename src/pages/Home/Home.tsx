@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col} from "antd";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
@@ -7,10 +7,10 @@ import TaskBasket from "../../components/TaskBasket/TaskBasket";
 import Today from "../Today/Today";
 import CompletedTask from "../CompletedTask/CompletedTask";
 import { Route} from "react-router-dom";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 
 const HomePage = () => {
-    const history = useHistory();
+    //const history = useHistory();
 
     return (
         <>

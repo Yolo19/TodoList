@@ -8,7 +8,7 @@ const Header = () => {
 
     const showSidebar = () => {
         setVisible(true);
-
+        setVisible(visible);
     }
 
     const menu = (
@@ -33,9 +33,9 @@ const Header = () => {
                 </Col>
                 <Col span={2}>
                     <Dropdown overlay={menu}>
-                        <a className="user_dropdown-link" onClick={e => e.preventDefault()}>
+                        <button className="user_dropdown-link" onClick={e => e.preventDefault()}>
                             Lu Yu <DownOutlined />
-                        </a>
+                        </button>
                     </Dropdown>
                 </Col>
             </Row>

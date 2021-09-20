@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { List, Input, Button, Checkbox } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import "./TaskBasket.css";
-import moment from "moment";
+//import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTodoList, addTodo, removeTodo, setTodoStatus } from "../../slices/taskSlice"
-import { useEffect } from "react";
+//import { useEffect } from "react";
 
 const TaskBasket = () => {
     
@@ -19,13 +19,9 @@ const TaskBasket = () => {
         }, 1000
     )
 
-    let todoId = 0;
+    //let todoId = 0;
 
 
-    interface data {
-        time: string;
-        title: string;
-    }
     // const data = [
     //     {
     //         id: todoId+1,

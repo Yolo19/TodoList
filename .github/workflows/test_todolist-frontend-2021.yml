@@ -6,12 +6,16 @@ name: Build and deploy Node.js app to Azure Web App - TodoList-Frontend-2021
 on:
   push:
     branches:
+      - main
       - test
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest
+    default:
+      run:
+        working-directory: "./"
 
     steps:
       - uses: actions/checkout@v2
@@ -53,4 +57,4 @@ jobs:
           app-name: 'TodoList-Frontend-2021'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4436F491F22C4A2C8CF61BFF8F3F392C }}
-          package: .
+          package: "./build"

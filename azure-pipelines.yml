@@ -5,7 +5,7 @@
 
 trigger:
 - main
-- nack
+- test
 
 pool:
   vmImage: ubuntu-latest

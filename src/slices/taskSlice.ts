@@ -8,22 +8,6 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
   const initialState:any =[];
 
-  // const initialState = {
-  //   todoId: null,
-  //   todoList: []
-  // }
-// First, create the thunk
-// export const fetchTaskById = createAsyncThunk('tasks/fetchTaskByIdStatus',async (taskId, { rejectWithValue }) => {
-//     try {
-//         const res = await getTask();
-//         return res;
-//       } catch (e) {
-//         return rejectWithValue(e.message);
-//       }        
-// });
-    
-  
-
   export const taskSlice = createSlice({
     name: 'task',
     initialState,

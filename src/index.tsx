@@ -5,13 +5,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import {store} from './store';
+// import graphQLClient from "./GraphQLClient";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
+
+
+export const graphQLClient = new ApolloClient({
+  uri: "https://my-todolist-web.azurewebsites.net/graphql",
+  cache: new InMemoryCache()
+});
 
 ReactDOM.render(
+  <ApolloProvider client={graphQLClient}>
   <React.StrictMode>
     <Provider store={store}>
     <App />
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
+  </ApolloProvider>,
   document.getElementById('root')
 );
 

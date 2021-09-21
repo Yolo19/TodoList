@@ -11,7 +11,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  rootDir: 'ToDoList'
+  rootDir: 'my-app'
   buildDir: '$(rootDir)/build'
 
 steps:

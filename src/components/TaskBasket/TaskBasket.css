@@ -1,0 +1,21 @@
+.creat_task_basket_container {
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 50%;
+}
+.add_task_oparation_container {
+    display: flex;
+}
+.add_task_input {
+    border: none;
+    border-bottom: 2px solid #eee;
+    margin: 0 10px;
+}
+.btn {
+    font-weight: 700;
+    color: #555;
+    letter-spacing: 2px;
+    cursor: pointer;
+}

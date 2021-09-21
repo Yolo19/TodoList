@@ -2,9 +2,10 @@ import React from "react";
 import { Form, Input, Button } from "antd";
 import "./LoginForm.css";
 import { useHistory } from "react-router-dom";
-// import {
-//     gql
-//   } from "@apollo/client";
+import {
+    gql,
+    useQuery
+  } from "@apollo/client";
 
 const LoginForm = () => {
     const history = useHistory();
@@ -25,22 +26,22 @@ const LoginForm = () => {
     //         }
     //     `;
 
-    // const LOAD_USERS= gql`
-    //         query {
-    //             users{
-    //                 nodes {
-    //                   id
-    //                   name
-    //                   gitHub
-    //                   imageURI
-    //                 }
-    //               }
-    //         }
-    // `
+    const LOAD_USERS= gql`
+            query {
+                users{
+                    nodes {
+                      id
+                      name
+                      gitHub
+                      imageURI
+                    }
+                  }
+            }
+    `
     
-    //const {loading, error, data} = useQuery(LOAD_USERS);
+    const {loading, error, data} = useQuery(LOAD_USERS);
     //const [mutateFunction, { data, loading, error }] = useMutation(Login_AccessToken);
-    //console.log("1", data);
+    console.log("1", data);
 
     
 

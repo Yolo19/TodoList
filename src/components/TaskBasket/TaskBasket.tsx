@@ -2,54 +2,59 @@ import React, { useState } from "react";
 import { List, Input, Button, Checkbox } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import "./TaskBasket.css";
-//import moment from "moment";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTodoList, addTodo, removeTodo, setTodoStatus } from "../../slices/taskSlice"
+//import { useDispatch, useSelector } from "react-redux";
+//import { selectTodoList, addTodo, removeTodo, setTodoStatus } from "../../slices/taskSlice"
 //import { useEffect } from "react";
 
+import { useMutation, gql,useQuery } from "@apollo/client";
+
+const LOAD_USERS= gql`
+            query {
+                users{
+                    nodes {
+                      id
+                      name
+                      gitHub
+                      imageURI
+                    }
+                  }
+            }
+    `;
+
+const ADD_TODO = gql `
+        mutation AddTodoListTask($title: String){
+             
+                id
+            
+        }
+    `;
+
+const GET_TODO_LIST = gql`
+        query {
+            users (id:1) {
+                nodes {
+                    name
+                }
+            }
+        }
+`;
+
 const TaskBasket = () => {
-    
+    //const { data} = useQuery(LOAD_USERS);
+    const data2 = useQuery(GET_TODO_LIST);
+    //console.log("1", data);
+    console.log("1", data2);
     const [taskName, setTaskName] = useState("");
-
-    const dispatch = useDispatch();
-    const todoList = useSelector(state => (selectTodoList(state)));
-    setTimeout(
-        () => {
-            console.log(todoList);
-        }, 1000
-    )
-
-    //let todoId = 0;
-
-
-    // const data = [
-    //     {
-    //         id: todoId+1,
-    //         title: taskName,
-    //         time: moment().format('MMMM Do YYYY, h:mm:ss a')
-    //     }
-    // ]
-    
+    const [addTodo] = useMutation(ADD_TODO);
 
     const handleChange = (e: any) => {
         setTaskName(e.target.value);
-
     }
 
 
-    const createAnNewTask = () => {
-        dispatch(addTodo(taskName));
-        setTaskName("");
-    }
-
-    const removeTodoTask = () => {
-        dispatch(removeTodo(todoList.id));
-        setTaskName("");
-    }
-
-    const clickToCompleted = (todoId: string) => {
-        dispatch(setTodoStatus({ completed: !todoList.completed, id: todoId }))
-    }
+    // const clickToCompleted = (todoId: string) => {
+    //     dispatch(setTodoStatus({ completed: !todoList.completed, id: todoId }))
+    // }
 
     return (
         <div>
@@ -59,7 +64,7 @@ const TaskBasket = () => {
                         placeholder="What need to be done?"
                         onChange={handleChange}
                     />
-                    <Button shape="round" icon={<PlusOutlined />} onClick={createAnNewTask} className="btn">
+                    <Button shape="round" icon={<PlusOutlined />} onClick={e=>{addTodo({ variables: { title: taskName } });}} className="btn">
                         Add Task
                     </Button>
                 </div>
@@ -67,7 +72,7 @@ const TaskBasket = () => {
                     <List
                         itemLayout="horizontal"
                     >
-                        {todoList.map((items: any, index:number) => (
+                        {/* {todoList.map((items: any, index:number) => (
                             <List.Item key={items.id}>
                                 <Checkbox
                                     value={items.completed}
@@ -81,7 +86,7 @@ const TaskBasket = () => {
                                 </Checkbox>
                                 <List.Item actions={[<Button onClick={removeTodoTask}>remove</Button>]}></List.Item>
                             </List.Item>
-                        ))}
+                        ))} */}
 
                     </List>
 

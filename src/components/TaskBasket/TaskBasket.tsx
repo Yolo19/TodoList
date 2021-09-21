@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { List, Input, Button, Checkbox } from "antd";
+import { List, Input, Button} from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import "./TaskBasket.css";
 //import { useDispatch, useSelector } from "react-redux";
@@ -8,18 +8,18 @@ import "./TaskBasket.css";
 
 import { useMutation, gql,useQuery } from "@apollo/client";
 
-const LOAD_USERS= gql`
-            query {
-                users{
-                    nodes {
-                      id
-                      name
-                      gitHub
-                      imageURI
-                    }
-                  }
-            }
-    `;
+// const LOAD_USERS= gql`
+//             query {
+//                 users{
+//                     nodes {
+//                       id
+//                       name
+//                       gitHub
+//                       imageURI
+//                     }
+//                   }
+//             }
+//     `;
 
 const ADD_TODO = gql `
         mutation AddTodoListTask($title: String){

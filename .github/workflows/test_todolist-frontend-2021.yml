@@ -56,4 +56,4 @@ jobs:
           app-name: 'TodoList-Frontend-2021'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4436F491F22C4A2C8CF61BFF8F3F392C }}
-          package: '.'
+          package: './build'

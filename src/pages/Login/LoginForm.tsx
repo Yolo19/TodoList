@@ -39,7 +39,7 @@ const LoginForm = () => {
             }
     `
     
-    const {loading, error, data} = useQuery(LOAD_USERS);
+    const {data} = useQuery(LOAD_USERS);
     //const [mutateFunction, { data, loading, error }] = useMutation(Login_AccessToken);
     console.log("1", data);
 

@@ -55,7 +55,7 @@ namespace TodoList.GraphQL.TodoListTasks
 
             todoListTask.Title = input.Title ?? todoListTask.Title;
             todoListTask.Description = input.Description ?? todoListTask.Description;
-            todoListTask.Completed = !todoListTask.Completed;
+            todoListTask.Completed = true;
 
 
             await context.SaveChangesAsync(cancellationToken);

@@ -15,9 +15,10 @@ namespace TodoList.GraphQL.TodoListTasks
     {
         [UseAppDbContext]
         [UsePaging]
-        public IQueryable<TodoListTask> GetTodoListTasks([ScopedService] AppDbContext context)
+        public IQueryable<TodoListTask> GetTodoListTasks(int id, [ScopedService] AppDbContext context)
         {
-            return context.TodoListTasks.OrderBy(c => c.Created);
+            return context.TodoListTasks.Where(c=>c.UserId==id).OrderBy(c => c.Created);
+            
         }
 
         [UseAppDbContext]

@@ -2,7 +2,7 @@
 
 namespace TodoList.Migrations
 {
-    public partial class Addagain : Migration
+    public partial class Initial2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

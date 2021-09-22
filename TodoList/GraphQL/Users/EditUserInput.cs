@@ -7,5 +7,7 @@ namespace TodoList.GraphQL.Users
 {
     public record EditUserInput(
         string? Name,
-        string? Password);
+        //string? Password);
+        //string GitHub,
+        string? ImageURI);
 }

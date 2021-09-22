@@ -9,7 +9,7 @@ namespace TodoList.Model
     public class TodoListTask
     {
         [Key]
-        public string Id { get; set; } = null!;
+        public int Id { get; set; }
 
         [Required]
         public string Title { get; set; } = null!;

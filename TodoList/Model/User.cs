@@ -12,10 +12,14 @@ namespace TodoList.Model
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
+
+        // public string Password { get; set; } = null!;
 
         [Required]
-        public string Password { get; set; }
+        public string GitHub { get; set; } = null!;
+
+        public string ImageURI { get; set; } = null!;
         public ICollection<TodoListTask> TodoListTasks { get; set; } = new List<TodoListTask>();
     }
 }

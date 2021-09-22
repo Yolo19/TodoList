@@ -24,23 +24,6 @@ namespace TodoList.GraphQL.Users
     [ExtendObjectType(name: "Mutation")]
     public class UserMutations
     {
-        //[UseAppDbContext]
-        ////[Authorize]
-        //public async Task<User> AddUserAsync(AddUserInput input,
-        //[ScopedService] AppDbContext context, CancellationToken cancellationToken)
-        //{
-        //    //var userIdStr = claimsPrincipal.Claims.First(c => c.Type == "userId").Value;
-        //    var user = new User
-        //    {
-        //        Name = input.Name,
-        //        Password = input.Password,
-        //    };
-
-        //    context.Users.Add(user);
-        //    await context.SaveChangesAsync(cancellationToken);
-
-        //    return user;
-        //}
 
         [UseAppDbContext]
         [Authorize]
@@ -51,7 +34,9 @@ namespace TodoList.GraphQL.Users
             var user = await context.Users.FindAsync(int.Parse(userIdStr));
 
             user.Name = input.Name ?? user.Name;
-            user.Password = input.Password ?? user.Password;
+            //user.Password = input.Password ?? user.Password;
+            //user.GitHub = input.GitHub ?? user.GitHub;
+            user.ImageURI = input.ImageURI ?? user.ImageURI;
 
             await context.SaveChangesAsync(cancellationToken);
 
@@ -78,14 +63,17 @@ namespace TodoList.GraphQL.Users
             client.Credentials = new Credentials(tokenInfo.AccessToken);
             var usernew = await client.User.Current();
 
-           var user = await context.Users.FirstOrDefaultAsync(s => s.Password == usernew.Login, cancellationToken);
+           var user = await context.Users.FirstOrDefaultAsync(s => s.GitHub == usernew.Login, cancellationToken);
 
             if (user == null)
             {
                 user = new User
                 {
                     Name = usernew.Name ?? usernew.Login,
-                    Password = usernew.Login,
+                    //Password = usernew.Login,
+                    GitHub = usernew.Login,
+                    ImageURI = usernew.AvatarUrl,
+
                 };
 
                 context.Users.Add(user);
@@ -97,7 +85,8 @@ namespace TodoList.GraphQL.Users
             var credentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new List<Claim>{
-                new Claim("userId", user.Id.ToString()),
+                //new Claim("userId", user.Id.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             };
 
             var jwtToken = new JwtSecurityToken(

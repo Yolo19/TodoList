@@ -2,7 +2,7 @@
 
 namespace TodoList.Migrations
 {
-    public partial class tes : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -9,10 +9,10 @@ namespace TodoList.Data
 {
     public class AppDbContext: DbContext
     {
-        public AppDbContext(DbContextOptions options) : base(options) { }
+        public AppDbContext(DbContextOptions options) : base(options) { } 
 
-        public DbSet<TodoListTask> TodoListTasks { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<TodoListTask> TodoListTasks { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

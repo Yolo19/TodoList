@@ -1,16 +1,19 @@
 {
   "dependencies": {
-    "identityapp1": {
-      "type": "identityapp",
-      "connectionId": "",
-      "suggestion": "true",
-      "ignored": "true"
+    "secrets1": {
+      "type": "secrets.user"
     },
     "mssql2": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/todolist-server/databases/todolist-db",
       "type": "mssql.azure",
       "connectionId": "ConnectionStrings:todolist",
-      "secretStore": "AzureAppSettings"
+      "secretStore": "LocalSecretsFile"
+    },
+    "identityapp1": {
+      "type": "identityapp",
+      "connectionId": "",
+      "suggestion": "true",
+      "ignored": "true"
     }
   }
 }

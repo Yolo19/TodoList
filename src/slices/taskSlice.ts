@@ -29,7 +29,7 @@ import { createSlice } from '@reduxjs/toolkit';
         // console.log(state.todoList);
         
         const newTodo  = {
-          tid: Math.random().toString(36).substr(2, 9), // https://gist.github.com/gordonbrander/2230317,
+          tid: Math.random().toString(36).substr(2, 9),
           completed: false,
           title: action.payload
         }

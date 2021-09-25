@@ -28,6 +28,7 @@ const TaskBasket = () => {
 
     const createAnNewTask = () => {
         dispatch(addTodo(taskName));
+        setTaskName("");
         console.log("test", todoList[todoList.length-1]);
         addTask({variables: {
             title: "title",
@@ -42,7 +43,8 @@ const TaskBasket = () => {
     }
 
     const clickToCompleted = (todoId: string) => {
-        dispatch(setTodoStatus({ completed: !todoList.completed, id: todoId }))
+        console.log(todoId);
+        dispatch(setTodoStatus({ completed: !todoList.completed, tid: todoId }))
     }
 
     return (
@@ -62,10 +64,10 @@ const TaskBasket = () => {
                         itemLayout="horizontal"
                     >
                         {todoList.map((items: any, index:number) => (
-                            <List.Item key={items.id}>
+                            <List.Item key={items.tid}>
                                 <Checkbox
                                     value={items.completed}
-                                    onChange={()=>clickToCompleted(items.id)}
+                                    onChange={()=>clickToCompleted(items.tid)}
                                 >
                                     <List.Item style={{
                                         textDecoration: items.completed? "line-through" : "none",

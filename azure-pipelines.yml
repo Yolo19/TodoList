@@ -5,43 +5,32 @@
 
 trigger:
 - main
-- test
 
 pool:
   vmImage: ubuntu-latest
 
 variables:
-  rootDir: 'my-app'
+  rootDir: '.'
   buildDir: '$(rootDir)/build'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
 - task: NodeTool@0
   inputs:
     versionSpec: '14.x'
   displayName: 'Install Node.js'
 
 - script: |
-    cd $(rootDir)
     npm install
     npm run build
-    cd ..
   displayName: 'npm install and build'
-
+  
 - task: ArchiveFiles@2
   inputs:
-      rootFolderOrFile: '$(buildDir)'
-      includeRootFolder: false
-      archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-      replaceExistingArchive: true
+    rootFolderOrFile: '$(buildDir)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:

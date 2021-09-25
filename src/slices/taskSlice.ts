@@ -1,4 +1,4 @@
-import { createSlice,} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
   export interface Todo {
     id: string;
@@ -6,7 +6,12 @@ import { createSlice,} from '@reduxjs/toolkit';
     completed: boolean;
   }
 
-  const initialState:any =[];
+  const initialState:any ={
+    todo: [],
+    user: null
+
+  };
+  
 
   export const taskSlice = createSlice({
     name: 'task',
@@ -24,37 +29,34 @@ import { createSlice,} from '@reduxjs/toolkit';
         // console.log(state.todoList);
         
         const newTodo  = {
-          id: Math.random().toString(36).substr(2, 9), // https://gist.github.com/gordonbrander/2230317,
+          tid: Math.random().toString(36).substr(2, 9), // https://gist.github.com/gordonbrander/2230317,
           completed: false,
           title: action.payload
         }
-        state.push(newTodo);
+        state.todo.push(newTodo);
       },
+
       removeTodo: (state, action)=>{
-        const index = state.findIndex((todo:any) => todo.id === action.payload);
-        state.splice(index, 1);
+        const index = state.todo.findIndex((todo:any) => todo.tid === action.payload);
+        state.todo.splice(index, 1);
       },
       setTodoStatus: (state, action)=>{
         console.log(action.payload);
-        const index = state.findIndex((todo:any)=>todo.id === action.payload.id);
-        state[index].completed = action.payload.completed;
-        console.log(state[index].completed);
+        const index = state.todo.findIndex((todo:any)=>todo.tid === action.payload.tid);
+        state.todo[index].completed = action.payload.completed;
+        console.log(state.todo[index].completed);
       }
       
       
     },
-    // extraReducers: (builder) => {
-    //     // Add reducers for additional action types here, and handle loading state as needed
-    //     builder.addCase(fetchTaskById.fulfilled, (state, action) => {
-    //       // Add user to the state array
-          
-    //     })
-    // },
+    extraReducers: (builder) => {
+        // Add reducers for additional action types here, and handle loading state as needed
+    },
   })
 
   // Action creators are generated for each case reducer function
 export const { addTodo, removeTodo,setTodoStatus} = taskSlice.actions;
 
-export const selectTodoList = (state:any) => state.Task;
+export const selectTodoList = (state:any) => state.Task.todo;
 
 export default taskSlice.reducer

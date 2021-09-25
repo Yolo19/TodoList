@@ -1,52 +1,49 @@
-import React from "react";
-import { Form, Input, Button } from "antd";
+import React, { useEffect} from "react";
+import { Form, Input, Button} from "antd";
 import "./LoginForm.css";
 import { useHistory } from "react-router-dom";
-import {
-    gql,
-    useQuery
-  } from "@apollo/client";
+import {useMutation} from "@apollo/client";
+import { useDispatch} from "react-redux";
+import {REQUEST_LOGIN} from "../../service/api";
+
 
 const LoginForm = () => {
     const history = useHistory();
-    
+    const dispatch = useDispatch();
     const CLIENT_ID = "200f667a68ca9427379e";
-    const REDIRECT_URI = "http://localhost:3000";
+    const REDIRECT_URI = "http://localhost:3000/login";
     const url = window.location.href;
     const code = url.split("?code=")[1];
     console.log(url);
     console.log(code);
-
+      
+    const [login] = useMutation(REQUEST_LOGIN);
     
-    // const Login_AccessToken = gql`
-    //     mutation($code:String!){
-    //             login(input:{code: $code}){
-    //                 jwt
-    //             }
-    //         }
-    //     `;
 
-    const LOAD_USERS= gql`
-            query {
-                users{
-                    nodes {
-                      id
-                      name
-                      gitHub
-                      imageURI
-                    }
-                  }
+    useEffect(() => {
+        const loginMethod = async () => {
+          if (code != null) {
+            try {
+              const { data } = await login({ variables: { code } });
+              if (data != null) {
+                console.log("token",data.login.jwt);
+                localStorage.setItem("token", data.login.jwt)
+                localStorage.setItem("userId", data.login.user.id)
+                localStorage.setItem("userName", data.login.user.name)
+                localStorage.setItem("userImage", data.login.user.imageURI)
+              }
+            } catch (e) {
+              console.log(e);
             }
-    `
-    
-    const {data} = useQuery(LOAD_USERS);
-    //const [mutateFunction, { data, loading, error }] = useMutation(Login_AccessToken);
-    console.log("1", data);
+            history.push('/');
+          }
+        };
+        loginMethod();
+      }, [code]);
 
-    
-
-    const handleClick = ()=>{        
-        history.push("/");
+    const handleClick = ()=>{
+        localStorage.getItem('token');     
+        console.log("111")
     }
 
     return (

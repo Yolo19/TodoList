@@ -7,10 +7,10 @@ import TaskBasket from "../../components/TaskBasket/TaskBasket";
 import Today from "../Today/Today";
 import CompletedTask from "../CompletedTask/CompletedTask";
 import { Route} from "react-router-dom";
-//import { useHistory } from "react-router-dom";
+
 
 const HomePage = () => {
-    //const history = useHistory();
+    
 
     return (
         <>

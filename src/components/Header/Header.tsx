@@ -1,37 +1,32 @@
 import React, {useState} from "react";
 import { MenuOutlined, DownOutlined } from "@ant-design/icons";
-import { Row, Col, Menu, Dropdown } from "antd"
+import { Row, Col, Menu, Dropdown,Avatar } from "antd"
 import "./Header.css";
-import { gql,useQuery } from "@apollo/client";
-const LOAD_USERS= gql`
-            query {
-                users{
-                    nodes {
-                      id
-                      name
-                      gitHub
-                      imageURI
-                    }
-                  }
-            }
-    `;
+import { gql,useQuery,useMutation } from "@apollo/client";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
-    const {data} = useQuery(LOAD_USERS);
-    console.log("1", data);
+    const history = useHistory();
     const [visible, setVisible] = useState(false);
+    const username = localStorage.getItem("userName");
+    const userImage = localStorage.getItem("userImage");
 
     const showSidebar = () => {
         setVisible(true);
         setVisible(visible);
     }
 
+    const handleLoginOut = ()=>{
+        localStorage.clear();
+        history.push("./login");
+    }
+
     const menu = (
         <Menu>
             <Menu.Item>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+                <p onClick={handleLoginOut}>
                     Login Out
-                </a>
+                </p>
             </Menu.Item>
 
         </Menu>
@@ -46,11 +41,14 @@ const Header = () => {
                 <Col span={18} >
                     <h1 className="header_title">To Do List</h1>
                 </Col>
-                <Col span={2}>
+                <Col span={3}>
                     <Dropdown overlay={menu}>
-                        <p className="user_dropdown-link" onClick={e => e.preventDefault()}>
-                            Lu Yu <DownOutlined />
-                        </p>
+                        <div>
+                        <Avatar src={userImage}/>
+                        <span className="user_dropdown-link">
+                            {username} <DownOutlined />
+                        </span>
+                        </div>
                     </Dropdown>
                 </Col>
             </Row>
